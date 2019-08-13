@@ -20,7 +20,12 @@
 
     <body>
         <div>
-            <button onclick="clicks++; this.innerHTML = clicks;">0</button>
+            <button onclick="++clicks; document.getElementById('counter').innerHTML = clicks;">
+                Click me
+            </button>
+            <div>
+                You have clicked the button <span id="counter">0</span> times.
+            </div>
         </div>
         <script>
             var clicks = 0;
