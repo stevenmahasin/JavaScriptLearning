@@ -30,6 +30,57 @@
         <div>
             You last pressed <span id="lastpressed">nothing</span>.
         </div>
+        <div>
+            <canvas id="box" width="150" height="150" tabindex="1" style="border: 1px solid black; margin: 8px;">
+                <!-- TODO Move CSS into separate file -->
+                Fallback content: Your browser currently does not support the canvas element.
+            </canvas>
+            <div>
+                Box is <span id="boxfocus">not</span> in focus.
+            </div>
+        </div>
+        <div>
+            <!-- TODO For debugging only -->
+            <samp>
+                <table>
+                    <tr>
+                        <td>size.width</td>
+                        <td>=</td>
+                        <td id="size.width"></td>
+                        <td><button onclick="++size.width; refresh();">+</button></td>
+                        <td><button onclick="--size.width; refresh();">-</button></td>
+                    </tr>
+                    <tr>
+                        <td>size.height</td>
+                        <td>=</td>
+                        <td id="size.height"></td>
+                        <td><button onclick="++size.height; refresh();">+</button></td>
+                        <td><button onclick="--size.height; refresh();">-</button></td>
+                    </tr>
+                    <tr>
+                        <td>position.x</td>
+                        <td>=</td>
+                        <td id="position.x"></td>
+                        <td><button onclick="++position.x; refresh();">+</button></td>
+                        <td><button onclick="--position.x; refresh();">-</button></td>
+                    </tr>
+                    <tr>
+                        <td>position.y</td>
+                        <td>=</td>
+                        <td id="position.y"></td>
+                        <td><button onclick="++position.y; refresh();">+</button></td>
+                        <td><button onclick="--position.y; refresh();">-</button></td>
+                    </tr>
+                    <tr>
+                        <td>speed</td>
+                        <td>=</td>
+                        <td id="speed"></td>
+                        <td><button onclick="++speed; updateDebug();">+</button></td>
+                        <td><button onclick="--speed; updateDebug();">-</button></td>
+                    </tr>
+                </table>
+            </samp>
+        </div>
         <script type="text/javascript" async src="index.js"></script>
     </body>
 
