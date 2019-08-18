@@ -66,7 +66,9 @@ function updateBox() {
         var ctx = box.getContext("2d");
         ctx.clearRect(0, 0, box.width, box.height); // Erase the whole canvas
         ctx.fillStyle = "#b31b1b"; // Change color
-        ctx.fillRect(position.x, position.y, size.width, size.height);
+        // ctx.fillRect(position.x, position.y, size.width, size.height);
+        var player = document.getElementById("player");
+        ctx.drawImage(player, position.x, position.y);
     }
 }
 
