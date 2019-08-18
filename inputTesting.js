@@ -21,6 +21,8 @@ document.addEventListener("keydown",
 
 // Canvas drawing
 
+var frameCounter = 0;
+
 var size = {
     width: 10,
     height: 10
@@ -60,14 +62,26 @@ function boundaryCheck() {
     }
 }
 
+function updateSprite() {
+    frameCounter = (frameCounter + 1) % 5;
+    updateBox();
+}
+
 function updateBox() {
+    var spriteName = [
+        "player0",
+        "player1",
+        "player2",
+        "player3",
+        "player4"
+    ];
     var box = document.getElementById("box");
     if (box.getContext) {
         var ctx = box.getContext("2d");
         ctx.clearRect(0, 0, box.width, box.height); // Erase the whole canvas
         ctx.fillStyle = "#b31b1b"; // Change color
         // ctx.fillRect(position.x, position.y, size.width, size.height);
-        var player = document.getElementById("player");
+        var player = document.getElementById(spriteName[frameCounter]);
         ctx.drawImage(player, position.x, position.y);
     }
 }
@@ -119,5 +133,7 @@ document.getElementById("box").addEventListener("blur",
         document.getElementById("boxfocus").textContent = "not";
     },
     false);
+
+setInterval(updateSprite, 500);
 
 refresh(); // Initialize canvas
