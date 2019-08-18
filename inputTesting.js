@@ -24,8 +24,8 @@ document.addEventListener("keydown",
 var frameCounter = 0;
 
 var size = {
-    width: 10,
-    height: 10
+    width: 1,
+    height: 1
 };
 
 var position = {
@@ -82,7 +82,7 @@ function updateBox() {
         ctx.fillStyle = "#b31b1b"; // Change color
         // ctx.fillRect(position.x, position.y, size.width, size.height);
         var player = document.getElementById(spriteName[frameCounter]);
-        ctx.drawImage(player, position.x, position.y);
+        ctx.drawImage(player, position.x, position.y, player.width * size.width, player.height * size.height);
     }
 }
 
