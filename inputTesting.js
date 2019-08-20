@@ -5,7 +5,7 @@ var debug = true;
 var clicks = 0;
 
 document.getElementById("clickme").addEventListener("click",
-    function () {
+    () => {
         ++clicks;
         document.getElementById("counter").textContent = clicks;
     },
@@ -14,7 +14,7 @@ document.getElementById("clickme").addEventListener("click",
 // Keyboard presses
 
 document.addEventListener("keydown",
-    function (event) {
+    (event) => {
         document.getElementById("lastpressed").textContent = event.code;
     },
     false);
@@ -27,6 +27,8 @@ var size = {
     width: 1,
     height: 1
 };
+
+var sizeMult = 1;
 
 var position = {
     x: 0,
@@ -41,7 +43,8 @@ function updateDebug() {
         "size.height",
         "position.x",
         "position.y",
-        "speed"
+        "speed",
+        "sizeMult"
     ];
     for (var item of data) {
         document.getElementById(item).textContent = eval(item); // TODO Dangerous?
@@ -62,27 +65,29 @@ function boundaryCheck() {
     }
 }
 
-function updateSprite() {
-    frameCounter = (frameCounter + 1) % 5;
-    updateBox();
-}
-
-function updateBox() {
+function getNextSprite() {
     var spriteName = [
         "player0",
         "player1",
         "player2",
         "player3",
         "player4"
-    ];
+    ]; // TODO This is hardcoded
+    var sprite = document.getElementById(spriteName[frameCounter]);
+    size.width = sprite.width * sizeMult;
+    size.height = sprite.height * sizeMult;
+    return sprite;
+}
+
+function updateBox() {
     var box = document.getElementById("box");
     if (box.getContext) {
         var ctx = box.getContext("2d");
         ctx.clearRect(0, 0, box.width, box.height); // Erase the whole canvas
-        ctx.fillStyle = "#b31b1b"; // Change color
+        // ctx.fillStyle = "#b31b1b"; // Change color
         // ctx.fillRect(position.x, position.y, size.width, size.height);
-        var player = document.getElementById(spriteName[frameCounter]);
-        ctx.drawImage(player, position.x, position.y, player.width * size.width, player.height * size.height);
+        var sprite = getNextSprite();
+        ctx.drawImage(sprite, position.x, position.y, size.width, size.height);
     }
 }
 
@@ -95,7 +100,7 @@ function refresh() {
 }
 
 document.getElementById("box").addEventListener("keydown",
-    function (event) {
+    (event) => {
         if (event.defaultPrevented) {
             return; // Do nothing if event already handled
         }
@@ -123,17 +128,22 @@ document.getElementById("box").addEventListener("keydown",
     false);
 
 document.getElementById("box").addEventListener("focus",
-    function () {
+    () => {
         document.getElementById("boxfocus").textContent = "";
     },
     false);
 
 document.getElementById("box").addEventListener("blur",
-    function () {
+    () => {
         document.getElementById("boxfocus").textContent = "not";
     },
     false);
 
-setInterval(updateSprite, 500);
+setInterval(
+    () => {
+        frameCounter = (frameCounter + 1) % 5; // TODO Magic number
+        updateBox();
+    },
+    200); // TODO Magic number
 
 refresh(); // Initialize canvas
