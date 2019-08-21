@@ -1,7 +1,11 @@
-var up;
-var down;
-var left;
-var right;
+"use strict";
+
+var input = {
+    up: false,
+    down: false,
+    left: false,
+    right: false
+};
 
 document.getElementById("box").addEventListener("keydown",
     (event) => {
@@ -11,42 +15,21 @@ document.getElementById("box").addEventListener("keydown",
         switch (event.code) {
             case "KeyW":
             case "ArrowUp":
-                if (up === undefined) {
-                    up = setInterval(() => {
-                        position.y -= speed;
-                    }, 50);
-                }
-                position.y -= speed;
+                input.up = true;
                 break;
             case "KeyS":
             case "ArrowDown":
-                if (down === undefined) {
-                    down = setInterval(() => {
-                        position.y += speed;
-                    }, 50);
-                }
-                position.y += speed;
+                input.down = true;
                 break;
             case "KeyA":
             case "ArrowLeft":
-                if (left === undefined) {
-                    left = setInterval(() => {
-                        position.x -= speed;
-                    }, 50);
-                }
-                position.x -= speed;
+                input.left = true;
                 break;
             case "KeyD":
             case "ArrowRight":
-                if (right === undefined) {
-                    right = setInterval(() => {
-                        position.x += speed;
-                    }, 50);
-                }
-                position.x += speed;
+                input.right = true;
                 break;
         }
-        refresh();
         event.preventDefault(); // Consume the event so it doesn't get handled twice
     },
     false);
@@ -59,22 +42,21 @@ document.getElementById("box").addEventListener("keyup",
         switch (event.code) {
             case "KeyW":
             case "ArrowUp":
-                up = clearInterval(up);
+                input.up = false;
                 break;
             case "KeyS":
             case "ArrowDown":
-                down = clearInterval(down);
+                input.down = false;
                 break;
             case "KeyA":
             case "ArrowLeft":
-                left = clearInterval(left);
+                input.left = false;
                 break;
             case "KeyD":
             case "ArrowRight":
-                right = clearInterval(right);
+                input.right = false;
                 break;
         }
-        refresh();
         event.preventDefault(); // Consume the event so it doesn't get handled twice
     },
     false);
