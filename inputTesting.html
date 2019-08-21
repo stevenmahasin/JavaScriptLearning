@@ -39,56 +39,11 @@
                 Box is <span id="boxfocus">not</span> in focus.
             </div>
         </div>
-        <div>
-            <!-- TODO For debugging only -->
-            <samp>
-                <table>
-                    <tr>
-                        <td>size.width</td>
-                        <td>=</td>
-                        <td id="size.width"></td>
-                        <td><button onclick="++size.width; refresh();">+</button></td>
-                        <td><button onclick="--size.width; refresh();">-</button></td>
-                    </tr>
-                    <tr>
-                        <td>size.height</td>
-                        <td>=</td>
-                        <td id="size.height"></td>
-                        <td><button onclick="++size.height; refresh();">+</button></td>
-                        <td><button onclick="--size.height; refresh();">-</button></td>
-                    </tr>
-                    <tr>
-                        <td>position.x</td>
-                        <td>=</td>
-                        <td id="position.x"></td>
-                        <td><button onclick="++position.x; refresh();">+</button></td>
-                        <td><button onclick="--position.x; refresh();">-</button></td>
-                    </tr>
-                    <tr>
-                        <td>position.y</td>
-                        <td>=</td>
-                        <td id="position.y"></td>
-                        <td><button onclick="++position.y; refresh();">+</button></td>
-                        <td><button onclick="--position.y; refresh();">-</button></td>
-                    </tr>
-                    <tr>
-                        <td>speed</td>
-                        <td>=</td>
-                        <td id="speed"></td>
-                        <td><button onclick="++speed; updateDebug();">+</button></td>
-                        <td><button onclick="--speed; updateDebug();">-</button></td>
-                    </tr>
-                    <tr>
-                        <td>sizeMult</td>
-                        <td>=</td>
-                        <td id="sizeMult"></td>
-                        <td><button onclick="++sizeMult; refresh();">+</button></td>
-                        <td><button onclick="--sizeMult; refresh();">-</button></td>
-                    </tr>
-                </table>
-            </samp>
-        </div>
-        <script type="text/javascript" async src="inputTesting.js"></script>
+        <script type="text/javascript" defer src="Entity.js"></script>
+        <script type="text/javascript" defer src="Player.js"></script>
+        <script type="text/javascript" defer src="input.js"></script>
+        <script type="text/javascript" defer src="main.js"></script>
+        <script type="text/javascript" defer src="inputTesting.js"></script>
         <div style="display: none;">
             <img id="player0" src="Player_Sprites/Player_Death_Left.png">
             <img id="player1" src="Player_Sprites/Player_Death_Left_1.png">
