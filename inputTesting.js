@@ -99,34 +99,6 @@ function refresh() {
     }
 }
 
-document.getElementById("box").addEventListener("keydown",
-    (event) => {
-        if (event.defaultPrevented) {
-            return; // Do nothing if event already handled
-        }
-        switch (event.code) {
-            case "KeyW":
-            case "ArrowUp":
-                position.y -= speed;
-                break;
-            case "KeyS":
-            case "ArrowDown":
-                position.y += speed;
-                break;
-            case "KeyA":
-            case "ArrowLeft":
-                position.x -= speed;
-                break;
-            case "KeyD":
-            case "ArrowRight":
-                position.x += speed;
-                break;
-        }
-        refresh();
-        event.preventDefault(); // Consume the event so it doesn't get handled twice
-    },
-    false);
-
 document.getElementById("box").addEventListener("focus",
     () => {
         document.getElementById("boxfocus").textContent = "";
